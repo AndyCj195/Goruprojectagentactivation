@@ -1,0 +1,141 @@
+/* GORU — TOKENS DE DISEÑO */
+
+:root {
+  /* ===== COLORES PRIMITIVOS ===== */
+  --color-gold-100: #E8C97A;
+  --color-gold-200: #C9A84C;
+  --color-gold-300: #A8893C;
+
+  --color-neutral-0: #050302;
+  --color-neutral-100: #0D0D0D;
+  --color-neutral-150: #1A1A1A;
+  --color-neutral-200: #2A2520;
+  --color-neutral-700: #8A8070;
+  --color-neutral-900: #F5F0E8;
+
+  --color-success-100: #4ADE80;
+  --color-success-200: #22C55E;
+  --color-warning-100: #FBBF24;
+  --color-warning-200: #F59E0B;
+  --color-error-100: #F87171;
+  --color-error-200: #EF4444;
+
+  /* ===== MÓDULOS GORU ===== */
+  --module-empresarial: #F59E0B;
+  --module-empresarial-rgb: 245, 158, 11;
+
+  --module-pos: #EF4444;
+  --module-pos-rgb: 239, 68, 68;
+
+  --module-contable: #10B981;
+  --module-contable-rgb: 16, 185, 129;
+
+  --module-bancos: #3B82F6;
+  --module-bancos-rgb: 59, 130, 246;
+
+  --module-proveedores: #06B6D4;
+  --module-proveedores-rgb: 6, 182, 212;
+
+  --module-rrhh: #EC4899;
+  --module-rrhh-rgb: 236, 72, 153;
+
+  --module-profesionales: #9333EA;
+  --module-profesionales-rgb: 147, 51, 234;
+
+  --module-portafolio: #84CC16;
+  --module-portafolio-rgb: 132, 204, 22;
+
+  --module-acceso: #A855F7;
+  --module-acceso-rgb: 168, 85, 247;
+
+  --module-facturacion: #7C3AED;
+  --module-facturacion-rgb: 124, 58, 237;
+
+  --module-crm: #1F2937;
+  --module-crm-rgb: 31, 41, 55;
+
+  --module-tickets: #6B7280;
+  --module-tickets-rgb: 107, 114, 128;
+
+  --module-citas: #F472B6;
+  --module-citas-rgb: 244, 114, 182;
+
+  /* ===== COLORES SEMÁNTICOS ===== */
+  --bg-deep: var(--color-neutral-0);
+  --bg-surface: var(--color-neutral-100);
+  --bg-panel: var(--color-neutral-150);
+  --border-default: var(--color-neutral-200);
+
+  --text-primary: var(--color-neutral-900);
+  --text-muted: var(--color-neutral-700);
+
+  --accent-primary: var(--color-gold-200);
+  --accent-hover: var(--color-gold-100);
+
+  --state-active: var(--color-success-200);
+  --state-inactive: var(--color-error-100);
+  --state-config: var(--color-warning-200);
+
+  /* ===== TIPOGRAFÍA ===== */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* ===== ESPACIADO ===== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* ===== BORDER RADIUS ===== */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 999px;
+
+  /* ===== SOMBRAS ===== */
+  --shadow-card: 0px 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-panel: 0px 4px 16px rgba(0, 0, 0, 0.4);
+
+  /* ===== TRANSICIONES ===== */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===== PREFERS REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
