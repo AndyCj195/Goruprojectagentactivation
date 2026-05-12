@@ -3,6 +3,7 @@ import { NavbarGoru } from './components/NavbarGoru';
 import { ButtonGoru } from './components/ButtonGoru';
 import { ModuleCardGoru } from './components/ModuleCardGoru';
 import { FAQItem } from './components/FAQItem';
+import { LanguageProvider } from './context/LanguageContext';
 import { ChevronDown, MapPin, Settings, Headphones, Link2, TrendingUp, Facebook, Instagram } from 'lucide-react';
 import { XLogo } from './components/XLogo';
 
@@ -171,8 +172,9 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-deep)] text-[var(--text-primary)]">
-      <NavbarGoru />
+    <LanguageProvider>
+      <div className="min-h-screen bg-[var(--bg-deep)] text-[var(--text-primary)]">
+        <NavbarGoru />
 
       {/* HERO SECTION */}
       <section
@@ -539,6 +541,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </LanguageProvider>
   );
 }

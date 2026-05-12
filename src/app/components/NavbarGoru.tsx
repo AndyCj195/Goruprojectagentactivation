@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, Facebook, Instagram } from 'lucide-react';
 import { XLogo } from './XLogo';
+import { LanguageSelector } from './LanguageSelector';
 
 const navLinks = [
   { label: 'Módulos', href: '#modulos' },
@@ -29,7 +30,7 @@ export function NavbarGoru() {
             style={{
               background: 'rgba(13, 13, 13, 0.7)',
               backdropFilter: 'blur(8px)',
-              borderRadius: '16px',
+              borderRadius: '28px',
               width: '160px',
               height: '56px'
             }}
@@ -47,8 +48,8 @@ export function NavbarGoru() {
             style={{
               background: 'rgba(13, 13, 13, 0.7)',
               backdropFilter: 'blur(8px)',
-              borderRadius: '16px',
-              width: '340px',
+              borderRadius: '28px',
+              width: '420px',
               height: '56px'
             }}
           >
@@ -71,13 +72,28 @@ export function NavbarGoru() {
             ))}
           </div>
 
+          {/* Language Island */}
+          <div
+            className="hidden lg:flex items-center justify-center px-4 py-3 border border-[var(--border-default)] absolute"
+            style={{
+              background: 'rgba(13, 13, 13, 0.7)',
+              backdropFilter: 'blur(8px)',
+              borderRadius: '28px',
+              width: '100px',
+              height: '56px',
+              right: 'calc(160px + 16px + 32px)'
+            }}
+          >
+            <LanguageSelector />
+          </div>
+
           {/* Redes Sociales Island (Derecha) */}
           <div
             className="hidden lg:flex items-center justify-center gap-4 px-4 py-3 border border-[var(--border-default)] absolute right-8"
             style={{
               background: 'rgba(13, 13, 13, 0.7)',
               backdropFilter: 'blur(8px)',
-              borderRadius: '16px',
+              borderRadius: '28px',
               width: '160px',
               height: '56px'
             }}
@@ -119,7 +135,7 @@ export function NavbarGoru() {
             style={{
               background: 'rgba(13, 13, 13, 0.7)',
               backdropFilter: 'blur(8px)',
-              borderRadius: '16px'
+              borderRadius: '28px'
             }}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -180,6 +196,16 @@ export function NavbarGoru() {
               >
                 <XLogo size={24} />
               </a>
+            </div>
+
+            <div className="border-t border-[var(--border-default)] pt-6 mt-2" />
+
+            {/* Language Selector Mobile */}
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-[var(--text-muted)]" style={{ fontFamily: 'var(--font-body)' }}>
+                Idioma
+              </span>
+              <LanguageSelector />
             </div>
           </div>
         </div>
