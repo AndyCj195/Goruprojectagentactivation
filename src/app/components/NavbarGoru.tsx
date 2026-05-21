@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { Menu, X, Facebook, Instagram } from 'lucide-react';
-import { XLogo } from './XLogo';
-import { LanguageSelector } from './LanguageSelector';
+import { useState } from "react";
+import { NavLink } from "react-router";
+import { Menu, X, Facebook, Instagram } from "lucide-react";
+import { XLogo } from "./XLogo";
+import { LanguageSelector } from "./LanguageSelector";
 
 const navLinks = [
-  { label: 'Módulos', href: '#modulos' },
-  { label: 'Precios', href: '#precios' },
-  { label: 'FAQs', href: '#faqs' },
-  { label: 'Contacto', href: '#contacto' }
+  { label: "Inicio", to: "/" },
+  { label: "Servicios", to: "/servicios" },
+  { label: "Nosotros", to: "/nosotros" },
+  { label: "Contacto", to: "/contacto" },
+  { label: "FAQs", to: "/faqs" },
 ];
 
 export function NavbarGoru() {
@@ -17,22 +19,19 @@ export function NavbarGoru() {
     <>
       <nav
         className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          background: 'transparent',
-          height: '72px',
-          paddingTop: '12px'
-        }}
+        style={{ background: "transparent", height: "72px", paddingTop: "12px" }}
       >
         <div className="max-w-[1280px] mx-auto px-8 h-full flex items-center justify-center gap-4">
-          {/* Logo Island (Izquierda) */}
-          <div
+          {/* Logo Island */}
+          <NavLink
+            to="/"
             className="flex items-center justify-center px-4 py-3 border border-[var(--border-default)] absolute left-8"
             style={{
-              background: 'rgba(13, 13, 13, 0.7)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '28px',
-              width: '160px',
-              height: '56px'
+              background: "rgba(13, 13, 13, 0.7)",
+              backdropFilter: "blur(8px)",
+              borderRadius: "28px",
+              width: "160px",
+              height: "56px",
             }}
           >
             <img
@@ -40,35 +39,38 @@ export function NavbarGoru() {
               alt="Goru"
               className="cursor-pointer hover:scale-105 transition-transform h-[36px]"
             />
-          </div>
+          </NavLink>
 
-          {/* Nav Links Island (Centro - absolutamente centrado) */}
+          {/* Nav Links Island (Centro) */}
           <div
             className="hidden lg:flex items-center justify-center gap-6 px-6 py-3 border border-[var(--border-default)]"
             style={{
-              background: 'rgba(13, 13, 13, 0.7)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '28px',
-              width: '420px',
-              height: '56px'
+              background: "rgba(13, 13, 13, 0.7)",
+              backdropFilter: "blur(8px)",
+              borderRadius: "28px",
+              width: "420px",
+              height: "56px",
             }}
           >
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="
-                  relative text-base text-[var(--text-primary)]
-                  hover:text-[var(--accent-hover)]
-                  transition-colors duration-200
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
+                className={({ isActive }) => `
+                  relative text-base transition-colors duration-200
                   after:absolute after:bottom-[-4px] after:left-0
-                  after:w-0 after:h-[2px] after:bg-[var(--accent-hover)]
-                  hover:after:w-full after:transition-all after:duration-300
-                "
-                style={{ fontFamily: 'var(--font-body)' }}
+                  after:h-[2px] after:bg-[var(--accent-primary)]
+                  after:transition-all after:duration-300
+                  ${isActive
+                    ? "text-[var(--accent-primary)] after:w-full"
+                    : "text-[var(--text-primary)] hover:text-[var(--accent-hover)] after:w-0 hover:after:w-full"
+                  }
+                `}
+                style={{ fontFamily: "var(--font-body)" }}
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -76,26 +78,26 @@ export function NavbarGoru() {
           <div
             className="hidden lg:flex items-center justify-center px-4 py-3 border border-[var(--border-default)] absolute"
             style={{
-              background: 'rgba(13, 13, 13, 0.7)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '28px',
-              width: '100px',
-              height: '56px',
-              right: 'calc(160px + 16px + 32px)'
+              background: "rgba(13, 13, 13, 0.7)",
+              backdropFilter: "blur(8px)",
+              borderRadius: "28px",
+              width: "100px",
+              height: "56px",
+              right: "calc(160px + 16px + 32px)",
             }}
           >
             <LanguageSelector />
           </div>
 
-          {/* Redes Sociales Island (Derecha) */}
+          {/* Redes Sociales Island */}
           <div
             className="hidden lg:flex items-center justify-center gap-4 px-4 py-3 border border-[var(--border-default)] absolute right-8"
             style={{
-              background: 'rgba(13, 13, 13, 0.7)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '28px',
-              width: '160px',
-              height: '56px'
+              background: "rgba(13, 13, 13, 0.7)",
+              backdropFilter: "blur(8px)",
+              borderRadius: "28px",
+              width: "160px",
+              height: "56px",
             }}
           >
             <a
@@ -133,9 +135,9 @@ export function NavbarGoru() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             style={{
-              background: 'rgba(13, 13, 13, 0.7)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '28px'
+              background: "rgba(13, 13, 13, 0.7)",
+              backdropFilter: "blur(8px)",
+              borderRadius: "28px",
             }}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -148,26 +150,32 @@ export function NavbarGoru() {
         <div
           className="fixed inset-0 z-40 lg:hidden bg-[var(--bg-surface)] pt-24 px-6"
           style={{
-            top: '72px',
-            borderTopLeftRadius: '24px',
-            borderTopRightRadius: '24px'
+            top: "72px",
+            borderTopLeftRadius: "24px",
+            borderTopRightRadius: "24px",
           }}
         >
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-lg text-[var(--text-primary)] hover:text-[var(--accent-hover)]"
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
+                className={({ isActive }) =>
+                  `text-lg transition-colors ${
+                    isActive
+                      ? "text-[var(--accent-primary)]"
+                      : "text-[var(--text-primary)] hover:text-[var(--accent-hover)]"
+                  }`
+                }
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
 
             <div className="border-t border-[var(--border-default)] pt-6 mt-2" />
 
-            {/* Redes Sociales Mobile */}
             <div className="flex items-center gap-4">
               <a
                 href="https://facebook.com"
@@ -200,9 +208,11 @@ export function NavbarGoru() {
 
             <div className="border-t border-[var(--border-default)] pt-6 mt-2" />
 
-            {/* Language Selector Mobile */}
             <div className="flex items-center justify-between">
-              <span className="text-sm text-[var(--text-muted)]" style={{ fontFamily: 'var(--font-body)' }}>
+              <span
+                className="text-sm text-[var(--text-muted)]"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
                 Idioma
               </span>
               <LanguageSelector />
